@@ -31,7 +31,7 @@ If `ad-generation.jp` is specified for ortb2.site.content.data[].name and `546` 
 
 * segment[].id: Required. Must be a string.
 * segment[].value: Optional. Must be a string.
-* If only id is provided (e.g., { id: "1001" }), the id is treated as a pre-arranged classification code agreed upon with the publisher.
+* If only id is provided (e.g., { id: "1001" } or { id: "sports" }), the id field itself is treated as the segment value (e.g., an attribute or tag).
 * If both id and value are provided (e.g., { id: "news_category", value: "Sports_Sumo" }), the value is read as the value associated with the id (key).
 
 Example first party data that's available to all bidders and all adunits:
@@ -47,9 +47,10 @@ pbjs.setConfig({
                         segtax: 546
                     },
                     segment: [
-                        // Only id (required, string) is provided; treated as a classification code
-                        { id: "1001" }
-                        // Both id (required, string) and value (optional, string) are provided
+                        // Processed as a single segment value (attribute or tag)
+                        { id: "1001" },
+                        { id: "sports" },
+                        // Processed as Key-Value pairs
                         { id: "news_category", value: "Sports_Sumo" },
                         { id: "local_gourmet", value: "sushi" },
                         { id: "location", value: "tokyo" },
